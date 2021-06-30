@@ -4,8 +4,8 @@ library(ggplot2)
 library(scales)
 library(RColorBrewer)
 library(tidyverse)
-# setwd("D:/myfriands10_google/삼성_설문지 분석/주관식/result")
-setwd("C:/Users/hyerin/Google 드라이브(myfriands10@gmail.com)//삼성_설문지 분석/주관식/result")
+# setwd("D:/myfriands10_google/주관식/result")
+setwd("C:/Users/hyerin/Google 드라이브(myfriands10@gmail.com)/주관식/result")
 
 dt1 <- read.csv("본인_19_강점.csv", header = F,fileEncoding = "UTF-8", encoding = "euc-kr")
 dt2 <- read.csv("본인_20_강점.csv", header = F,fileEncoding = "UTF-8", encoding = "euc-kr")
@@ -77,7 +77,7 @@ dt58 <- read.csv("비임원타인_21_단점.csv", header = F,fileEncoding = "UTF
 
 
 ###
-
+### 한번에 여러개의 파일들을 list로 불러오는 코드 (ex. 58개의 csv 파일을 불러와 list에 58개의 원소 각각에 저장)
 getwd()
 #dir()
 
@@ -118,7 +118,7 @@ names(ex)
 
 
 
-##### ggplot
+##### ggplot 이용해서 단어 빈도수 
 ggplot(dt1[1:10,] %>% mutate(color = ifelse(V1 == "경험", "blue", "black")), aes(prob, reorder(V1,prob), fill = color)) +
   geom_col() + 
   geom_text(aes(x=prob ,label=paste0(prob,"%")),colour='white', 
